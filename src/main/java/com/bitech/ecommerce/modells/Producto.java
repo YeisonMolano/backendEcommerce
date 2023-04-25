@@ -19,7 +19,9 @@ public class Producto {
     @Column
     private String categoria;
     @Column
-    private int cantidad;
+    private int stock;
     @Column
     private String foto;
+    @Column
+    private String cantidad;
 }

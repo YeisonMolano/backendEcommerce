@@ -3,9 +3,10 @@ package com.bitech.ecommerce.service;
 import com.bitech.ecommerce.modells.Persona;
 import com.bitech.ecommerce.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class PersonaServiceImpl implements PersonaService{
     @Autowired
     private PersonaRepository personaRepository;

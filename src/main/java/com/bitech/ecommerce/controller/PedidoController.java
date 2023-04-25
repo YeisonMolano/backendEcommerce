@@ -2,6 +2,7 @@ package com.bitech.ecommerce.controller;
 
 import com.bitech.ecommerce.modells.Pedido;
 import com.bitech.ecommerce.service.PedidoService;
+import com.bitech.ecommerce.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
+    @Autowired
+    private ProductoService productoService;
 
     @GetMapping("/get-all")
     public Iterable<Pedido> pedidos(){
@@ -19,6 +22,7 @@ public class PedidoController {
 
     @PostMapping("/new-pedido")
     public Pedido newPedido(@RequestBody Pedido newPedido){
+        this.productoService.compraRealizada(newPedido.getCantidad(), newPedido.getProducto().getIdProducto());
         return this.pedidoService.newPedido(newPedido);
     }
 
@@ -27,7 +31,7 @@ public class PedidoController {
         return this.pedidoService.updatePedido(pedido);
     }
 
-    @PostMapping("/{idPoducto}")
+    @DeleteMapping("/{idPoducto}")
     public void deletePedido(@PathVariable("idProducto") Long idPedido){
         this.pedidoService.deletePedidoById(idPedido);
     }

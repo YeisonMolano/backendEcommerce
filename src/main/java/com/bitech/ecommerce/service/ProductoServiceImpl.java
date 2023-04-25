@@ -3,9 +3,11 @@ package com.bitech.ecommerce.service;
 import com.bitech.ecommerce.modells.Producto;
 import com.bitech.ecommerce.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-
+@Service
 public class ProductoServiceImpl implements ProductoService{
     @Autowired
     private ProductoRepository productoRepository;
@@ -31,11 +33,11 @@ public class ProductoServiceImpl implements ProductoService{
         Optional<Producto> producto = this.ifExist(productoNew.getIdProducto());
         if(producto != null){
             producto.get().setNombreProducto(productoNew.getNombreProducto());
-            producto.get().setCantidad(productoNew.getCantidad());
+            producto.get().setStock(productoNew.getStock());
             producto.get().setFoto(productoNew.getFoto());
             producto.get().setReferencia(productoNew.getReferencia());
             producto.get().setCategoria(productoNew.getCategoria());
-            return this.newProducto(producto.get());
+            return this.productoRepository.save(producto.get());
         }else{
             return null;
         }
@@ -44,5 +46,11 @@ public class ProductoServiceImpl implements ProductoService{
     @Override
     public Iterable<Producto> getAll() {
         return this.productoRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void compraRealizada(int cantidad, Long id){
+        this.productoRepository.restarCantidad(id, cantidad);
     }
 }

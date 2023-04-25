@@ -5,6 +5,9 @@ import com.bitech.ecommerce.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@CrossOrigin(origins = {"http://localhost:4200/" , "http://localhost:8080/"})
+@RequestMapping("/persona")
 public class PersonaController {
     @Autowired
     private PersonaService personaService;
@@ -24,7 +27,7 @@ public class PersonaController {
         return this.personaService.updatePersona(persona);
     }
 
-    @PostMapping("/{idPersona}")
+    @DeleteMapping("/{idPersona}")
     public void deletePersona(@PathVariable("idPersona") Long idPersona){
         this.personaService.deletePersonaById(idPersona);
     }

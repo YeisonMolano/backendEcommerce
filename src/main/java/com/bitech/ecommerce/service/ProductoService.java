@@ -10,4 +10,5 @@ public interface ProductoService {
     void deleteProductoById(Long idProducto);
     Producto updateProducto(Producto producto);
     Iterable<Producto> getAll();
+    void compraRealizada(int cantidad, Long id);
 }

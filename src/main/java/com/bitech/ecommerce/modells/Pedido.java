@@ -12,8 +12,11 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long idPedido;
+    @JoinColumn
+    @ManyToOne
+    private Producto producto;
     @Column
-    private ArrayList<Producto> productos;
+    private String comprador;
     @Column
-    private Persona comprador;
+    private int cantidad;
 }

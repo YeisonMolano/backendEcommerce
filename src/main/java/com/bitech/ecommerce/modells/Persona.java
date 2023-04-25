@@ -1,9 +1,6 @@
 package com.bitech.ecommerce.modells;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -12,12 +9,12 @@ import lombok.Data;
 public class Persona {
     @Id
     private Long numIdentificacion;
-    @Column
+    @Column(nullable = false)
     private String nombre;
-    @Column
+    @Column(nullable = false)
     private String apellido;
-    @Column
+    @Column(nullable = false)
     private String direccion;
-    @Column
+    @Column(nullable = false)
     private String numTelefono;
 }
