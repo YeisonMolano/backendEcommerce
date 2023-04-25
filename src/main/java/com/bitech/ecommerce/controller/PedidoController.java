@@ -22,5 +22,13 @@ public class PedidoController {
         return this.pedidoService.newPedido(newPedido);
     }
 
+    @PutMapping("/{idPedido}")
+    public Pedido updatePedido(@RequestBody Pedido pedido){
+        return this.pedidoService.updatePedido(pedido);
+    }
 
+    @PostMapping("/{idPoducto}")
+    public void deletePedido(@PathVariable("idProducto") Long idPedido){
+        this.pedidoService.deletePedidoById(idPedido);
+    }
 }
