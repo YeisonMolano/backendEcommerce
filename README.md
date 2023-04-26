@@ -4,7 +4,7 @@ en arquitectura MVC. Cuenta con tres clases las cuales funcionan como entidades 
 con su respectivo repositorio, y su crud, al mismo tiempo una clase persona en donde van a estar todos los datos de compradores y administradores 
 (Si hay un registro previo), por ultimo se cuenta con un clase pedido que es la encargada de ver todo el stock del producto que queda luego de que se realiza una
 compra.
-Se desarrolla con Java utilizando SpringBoot, con JDk 17, para la parte de la base de datos se utiliza WorkBench (MySql).
+Se desarrolla con Java utilizando SpringBoot, con JDk 17, para la parte de la base de datos se utiliza WorkBench (MySql). Para que el proyecto funcione es necesario tener creada una base de datos en el gestor con el nombre de "bitech"
 
 Se adjuntan una serie de pruebas realizadas con Postman.
 Producto
